@@ -1,0 +1,36 @@
+<div class="options-container">
+    <div class="options-header">
+        Available wells
+    </div>
+    <div class="options-content">
+        <div class="options-search">
+            <app-dlb-search (search)="onHandleSearch($event)" [type]="'unselected'"></app-dlb-search>
+        </div>
+
+        <!-- Project the UNSELECTED OPTIONS content. -->
+        <ng-content select="app-dlb-options-group[type='unselected']"></ng-content>
+    </div>
+</div>
+
+<div class="controls-container">
+    <button (click)="addToSelected()" title="Add To Selected" class="control">
+        &#10503;
+    </button>
+    <button (click)="removeFromSelected()" title="Remove From Selected" class="control">
+        &#10502;
+    </button>
+</div>
+
+<div class="options-container">
+    <div class="options-header">
+        Selected wells
+    </div>
+    <div class="options-content">
+        <div class="options-search">
+            <app-dlb-search (search)="onHandleSearch($event)" [type]="'selected'"></app-dlb-search>
+        </div>
+
+        <!-- Project the SELECTED OPTIONS content. -->
+        <ng-content select="app-dlb-options-group[type='selected']"></ng-content>
+    </div>
+</div>

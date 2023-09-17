@@ -1,0 +1,37 @@
+<app-dlb-select (select)="addToSelectedContacts( $event )" (unselect)="removeFromSelectedContacts( $event )"
+  (searchFilter)="handleFilterContacts( $event )">
+
+  <app-dlb-options-group type="unselected">
+
+    <app-dlb-option *ngFor="let contact of unselectedContactsFilter" [value]="contact">
+
+      <app-dlb-contact [contact]="contact"></app-dlb-contact>
+
+    </app-dlb-option>
+
+  </app-dlb-options-group>
+
+  <app-dlb-options-group type="selected">
+
+    <div *ngIf="( ! selectedContactsFilter.length )" class="empty">
+
+      <span class="empty__message">
+        Please select at least<br />
+        one Contact.
+      </span>
+
+    </div>
+
+    <app-dlb-option *ngFor="let contact of selectedContactsFilter" [value]="contact" class="new">
+
+      <app-dlb-contact [contact]="contact"></app-dlb-contact>
+
+    </app-dlb-option>
+  </app-dlb-options-group>
+
+</app-dlb-select>
+
+<p class="note">
+  You have <strong>{{ selectedContactsFilter.length }} of {{ contacts.length }}</strong>
+  contacts selected.
+</p>
